@@ -21,15 +21,6 @@ class PmsService{
 
         return $query->when($currentId, fn($query) => $query->whereNot('id', $currentId))
                      ->availableBetween($start, $end);
-        
-        // $query->whereDoesntHave('reservations', function ($q) use ($start, $end, $currentId) {
-        //     $q->when($currentId, fn($query) => $query->whereNot('id', $currentId))
-        //       ->where(fn ($query) => 
-        //         $query->whereBetween('check_in_date', [$start, $end])
-        //               ->orWhereBetween('check_out_date', [$start, $end])
-        //               ->orWhere(fn ($sub) => $sub->where('check_in_date', '<=', $start)->where('check_out_date', '>=', $end))
-        //     );
-        // });
     }
 
     public static function roomReservationRange($get, $record){

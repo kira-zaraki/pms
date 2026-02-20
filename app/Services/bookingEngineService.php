@@ -11,22 +11,6 @@ use Carbon\Carbon;
 
 class bookingEngineService
 {
-    // public static function getAvailableRooms($checkIn, $checkOut, $type = null)
-    // {
-    //     return Room::query()
-    //         ->when($type, fn($q) => $q->where('type', $type))
-    //         ->when($checkIn && $checkOut, function ($query) use ($checkIn, $checkOut) {
-    //             $query->whereDoesntHave('reservations', function ($q) use ($checkIn, $checkOut) {
-    //                 $q->whereIn('status', [ReservationStatus::Confirmed, ReservationStatus::Pending])
-    //                     ->where(function ($q) use ($checkIn, $checkOut) {
-    //                         $q->where('check_in_date', '<', $checkOut)
-    //                         ->where('check_out_date', '>', $checkIn);
-    //                     });
-    //             });
-    //         })
-    //         ->with('galleries');
-    // }
-
     public static function createBooking(array $data, Room $room)
     {
         return DB::transaction(function () use ($data, $room) {
